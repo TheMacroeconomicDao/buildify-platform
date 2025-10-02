@@ -1,0 +1,52 @@
+version: 2
+updates:
+  # Backend (Composer)
+  - package-ecosystem: "composer"
+    directory: "/apps/backend"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "backend"
+    reviewers:
+      - "TheMacroeconomicDao"
+    commit-message:
+      prefix: "chore(backend)"
+      include: "scope"
+
+  # Mobile (npm)
+  - package-ecosystem: "npm"
+    directory: "/apps/mobile"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "mobile"
+    reviewers:
+      - "TheMacroeconomicDao"
+    commit-message:
+      prefix: "chore(mobile)"
+      include: "scope"
+    ignore:
+      # Ignore React Native core updates (manual)
+      - dependency-name: "react-native"
+        update-types: ["version-update:semver-major"]
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    labels:
+      - "dependencies"
+      - "ci/cd"
+    commit-message:
+      prefix: "chore(ci)"
