@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Backend (Laravel)
+apps/backend/storage/
+apps/backend/bootstrap/cache/
+apps/backend/public/hot
+apps/backend/public/storage
+apps/backend/.phpunit.result.cache
+apps/backend/Homestead.json
+apps/backend/Homestead.yaml
+apps/backend/npm-debug.log
+apps/backend/yarn-error.log
+
+# Mobile (React Native)
+apps/mobile/android/app/build/
+apps/mobile/android/app/release/
+apps/mobile/ios/build/
+apps/mobile/ios/Pods/
+apps/mobile/.expo/
+apps/mobile/.expo-shared/
+apps/mobile/dist/
+apps/mobile/*.jks
+apps/mobile/*.p8
+apps/mobile/*.p12
+apps/mobile/*.key
+apps/mobile/*.mobileprovision
+apps/mobile/*.orig.*
+apps/mobile/web-build/
+
+# Testing
+apps/*/coverage/
+*.lcov
+
+# Production
+build/
+dist/
+*.log
+
+# OS
+Thumbs.db
+
+# Docker
+*.log
+docker-compose.override.yml
