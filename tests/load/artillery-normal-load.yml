@@ -1,0 +1,110 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 60
+      arrivalRate: 10
+      name: "Warm up phase"
+    - duration: 300
+      arrivalRate: 50
+      name: "Normal load - 50 users/sec"
+    - duration: 60
+      arrivalRate: 10
+      name: "Cool down"
+  defaults:
+    headers:
+      Content-Type: 'application/json'
+  processor: "./artillery-helpers.js"
+
+scenarios:
+  - name: "Browse Orders Flow"
+    weight: 40
+    flow:
+      - post:
+          url: "/api/login"
+          json:
+            email: "test@example.com"
+            password: "password123"
+          capture:
+            - json: "$.data.token"
+              as: "authToken"
+      - get:
+          url: "/api/orders?page=1&per_page=20"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: 200
+      - think: 2
+      - get:
+          url: "/api/orders/{{ $randomNumber(1, 100) }}"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: [200, 404]
+
+  - name: "User Profile Flow"
+    weight: 30
+    flow:
+      - post:
+          url: "/api/login"
+          json:
+            email: "executor{{ $randomNumber(1, 10) }}@test.com"
+            password: "password123"
+          capture:
+            - json: "$.data.token"
+              as: "authToken"
+      - post:
+          url: "/api/user/me"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+      - get:
+          url: "/api/portfolio"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+
+  - name: "Subscription Check Flow"
+    weight: 20
+    flow:
+      - post:
+          url: "/api/login"
+          json:
+            email: "customer{{ $randomNumber(1, 10) }}@test.com"
+            password: "password123"
+          capture:
+            - json: "$.data.token"
+              as: "authToken"
+      - get:
+          url: "/api/subscription/get"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: 200
+      - get:
+          url: "/api/subscription/get-all"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+
+  - name: "Wallet Flow"
+    weight: 10
+    flow:
+      - post:
+          url: "/api/login"
+          json:
+            email: "user{{ $randomNumber(1, 20) }}@test.com"
+            password: "password123"
+          capture:
+            - json: "$.data.token"
+              as: "authToken"
+      - get:
+          url: "/api/wallet/me"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: 200
+      - get:
+          url: "/api/wallet/transactions"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+
