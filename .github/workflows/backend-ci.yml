@@ -99,7 +99,7 @@ jobs:
           DB_PASSWORD: buildify123
 
       - name: Upload coverage reports
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         with:
           files: apps/backend/coverage.xml
           flags: backend

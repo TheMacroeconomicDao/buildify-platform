@@ -40,7 +40,7 @@ jobs:
         working-directory: apps/mobile
 
       - name: Upload coverage reports
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
         with:
           files: apps/mobile/coverage/lcov.info
           flags: mobile
