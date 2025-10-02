@@ -1,339 +1,206 @@
-# 🏗️ Buildify Platform
+# 🏗️ Welcome to Buildify Platform!
 
-**Enterprise-grade marketplace for construction and repair services**
+<div align="center">
+  
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:FF6B6B,50:4ECDC4,100:45B7D1&height=300&section=header&text=Buildify%20Platform&fontSize=90&fontAlignY=35&desc=Enterprise%20Marketplace%20for%20Construction%20Services&descAlignY=55&descAlign=50&fontColor=fff&animation=fadeIn" />
+  
+  <br>
+  
+  [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=35&duration=2000&pause=1000&color=FF6B6B&center=true&vCenter=true&multiline=true&width=1000&height=220&lines=🏗️+Building+the+Future+of+Construction;🌟+Connecting+Customers+%26+Professionals;⚡+Powered+by+AI+%26+Real-time+Tech;🔥+350%2B+API+Endpoints;💡+Multi-role+Ecosystem)](https://git.io/typing-svg)
+  
+</div>
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Backend](https://img.shields.io/badge/Backend-Laravel%2011-red)](apps/backend)
-[![Mobile](https://img.shields.io/badge/Mobile-React%20Native%200.75.3-blue)](apps/mobile)
-[![Database](https://img.shields.io/badge/Database-PostgreSQL%2015-blue)]()
-[![Cache](https://img.shields.io/badge/Cache-Redis%207-red)]()
+[![License](https://img.shields.io/badge/license-MIT-blue.svg?style=for-the-badge)](LICENSE)
+[![Backend](https://img.shields.io/badge/Backend-Laravel%2011-red?style=for-the-badge&logo=laravel)](backend/)
+[![Mobile](https://img.shields.io/badge/Mobile-React%20Native%200.75.3-blue?style=for-the-badge&logo=react)](mobile/)
+[![Database](https://img.shields.io/badge/Database-PostgreSQL%2015-blue?style=for-the-badge&logo=postgresql)](https://www.postgresql.org/)
 
-## 📋 Overview
+## 🌟 About Buildify
 
-**Buildify** is a comprehensive marketplace platform connecting customers with construction and repair service providers. The platform supports multiple user types (Customers, Executors, Mediators) with real-time communication, AI-powered design generation, and integrated payment processing.
+**Buildify Platform** is an enterprise-grade marketplace that revolutionizes how customers find and hire construction professionals. We combine modern technology, transparent processes, and intelligent automation to create a trusted ecosystem.
 
-### Key Features
+### 🎯 Key Metrics
 
-- 🔐 **Multi-role System**: Support for Customers, Executors, Mediators, and Admins
-- 💳 **Payment Integration**: Stripe-powered subscriptions and wallet system
-- 🤖 **AI Integration**: OpenAI GPT-4 for interior design generation
-- 📱 **Real-time Communication**: WebSocket-based notifications
-- 🌐 **Multi-language Support**: 7 languages including English, Russian, Arabic
-- 💰 **Referral System**: Automated cashback rewards
-- 📊 **Admin Panel**: Comprehensive management via Orchid Platform
+- 🚀 **350+ API Endpoints** - Comprehensive RESTful API
+- 📱 **47+ Mobile Screens** - Full-featured native apps
+- 💾 **100+ DB Migrations** - Robust data schema
+- 🎨 **60+ Custom Components** - Beautiful UI library
+- 👥 **4 User Types** - Multi-role ecosystem
+- 🌐 **7 Languages** - Global reach
 
-## 🏛️ Architecture
+## ⚡ Core Features
 
-This is a **monorepo** containing:
+<table>
+<tr>
+<td width="50%">
 
+### 🎯 Order Management
+- ✅ Create detailed requests
+- ✅ Receive executor responses
+- ✅ Compare proposals
+- ✅ Track progress
+- ✅ Mutual completion
+- ✅ Review system
+
+</td>
+<td width="50%">
+
+### 💳 Payments & Subscriptions
+- 💰 Wallet system (AED)
+- 💳 Stripe integration
+- 📊 4-tier subscriptions
+- 🎯 Usage limits
+- 💸 Escrow payments
+- 📈 Transaction history
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### 🤖 AI Integration
+- 🎨 GPT-4 design generation
+- 🖼️ DALL-E 3 visualizations
+- ⚡ Async processing
+- 🔄 Generate variations
+- 💾 Save & share
+
+</td>
+<td width="50%">
+
+### 🔔 Real-time
+- 📡 WebSocket (Soketi)
+- 📲 Push (FCM)
+- 💬 In-app notifications
+- ✉️ Email alerts
+- 🔴 Live updates
+
+</td>
+</tr>
+</table>
+
+## 🛠️ Technology Stack
+
+<div align="center">
+  <img src="https://skillicons.dev/icons?i=laravel,react,postgres,redis,docker,nginx,php,typescript,github&theme=dark" />
+</div>
+
+### Backend
+```yaml
+Framework: Laravel 11 (PHP 8.2+)
+Database: PostgreSQL 15
+Cache: Redis 7
+WebSocket: Soketi
+Auth: Laravel Sanctum
+Payments: Stripe + Cashier
+AI: OpenAI GPT-4
+Admin: Orchid Platform
 ```
-buildify-platform/
-├── apps/
-│   ├── backend/          # Laravel 11 API
-│   └── mobile/           # React Native app
-├── docs/                 # Documentation
-├── scripts/              # Utility scripts
-└── .github/             # CI/CD workflows
+
+### Mobile
+```yaml
+Framework: React Native 0.75.3
+State: Redux + Persist
+Navigation: React Navigation 6
+API: Axios
+Real-time: Pusher.js
+i18n: i18next (7 langs)
+Push: Firebase FCM
+Maps: RN Maps
 ```
-
-### Technology Stack
-
-**Backend:**
-- Laravel 11 (PHP 8.2+)
-- PostgreSQL 15
-- Redis 7
-- Soketi (WebSocket)
-- Orchid Platform (Admin)
-- Stripe + Laravel Cashier
-- OpenAI GPT-4
-
-**Mobile:**
-- React Native 0.75.3
-- Redux + Redux Persist
-- React Navigation 6
-- Pusher.js + Laravel Echo
-- Firebase Cloud Messaging
-- Stripe Checkout
-
-**Infrastructure:**
-- Docker Compose
-- Nginx
-- Supervisor
-- Let's Encrypt SSL
-
-## 📊 Project Metrics
-
-- **API Endpoints**: 350+
-- **Mobile Screens**: 47+
-- **Database Migrations**: 100+
-- **Custom Components**: 60+
-- **User Types**: 4 (Customer, Executor, Mediator, Admin)
-- **Languages Supported**: 7
 
 ## 🚀 Quick Start
 
-### Prerequisites
-
-- Docker & Docker Compose
-- Node.js 18+
-- PHP 8.2+
-- Composer
-
-### Backend Setup
+### Docker (Recommended)
 
 ```bash
-cd apps/backend
-cp .env.example .env
+git clone https://github.com/TheMacroeconomicDao/buildify-platform.git
+cd buildify-platform
+make up
+make backend-migrate
+```
+
+Access at: http://localhost:3000
+
+### Manual Setup
+
+**Backend:**
+```bash
+cd backend
 composer install
+cp .env.example .env
 php artisan key:generate
 php artisan migrate
 php artisan serve
 ```
 
-### Mobile Setup
-
+**Mobile:**
 ```bash
-cd apps/mobile
+cd mobile
 npm install
-cp env.local .env
-npm start
-
-# iOS
-npm run ios
-
-# Android
-npm run android
+npm run android  # or npm run ios
 ```
 
-### Docker Setup
+## 👥 User Types
 
-```bash
-docker-compose up -d
+| Type | Role | Key Features |
+|------|------|-------------|
+| 👤 **Customer** (Type 1) | Order creator | Create orders, hire executors, pay & review |
+| 🔨 **Executor** (Type 0) | Service provider | Browse orders, submit bids, showcase portfolio |
+| 🤝 **Mediator** (Type 2) | Deal manager | Manage transactions, quality control, earn commission |
+| 👑 **Admin** (Type 99) | Platform admin | User management, verification, analytics |
+
+## 📈 Roadmap
+
+```mermaid
+gantt
+    title Buildify Platform Roadmap 2026
+    dateFormat YYYY-MM-DD
+    
+    section Q1: Stability
+    Test Coverage 70%    :2026-01-01, 60d
+    Error Tracking       :2026-01-15, 30d
+    CI/CD Pipeline       :2026-02-01, 30d
+    
+    section Q2: Performance
+    Database Optimization :2026-04-01, 30d
+    Caching Strategy     :2026-05-01, 30d
+    Mobile Performance   :2026-06-01, 30d
+    
+    section Q3: Features
+    Deep Linking         :2026-07-01, 30d
+    Chat System          :2026-08-01, 30d
+    Video Calls          :2026-09-01, 30d
 ```
 
 ## 📚 Documentation
 
-- [Technical Overview](docs/TECHNICAL_OVERVIEW.md)
-- [Architecture Analysis](docs/ARCHITECTURE_ANALYSIS.md)
-- [Backend Analysis](docs/BACKEND_ANALYSIS.md)
-- [Mobile Analysis](docs/MOBILE_ANALYSIS.md)
-- [API Documentation](apps/backend/public/swagger)
-- [Deployment Guide](docs/DEPLOYMENT.md)
+- 📋 [Technical Overview](docs/TECHNICAL_OVERVIEW.md)
+- 🏛️ [Architecture Analysis](docs/ARCHITECTURE_ANALYSIS.md)  
+- 🚀 [Quick Start Guide](docs/guides/QUICK_START.md)
+- 🤝 [Contributing Guidelines](CONTRIBUTING.md)
+- 📝 [Changelog](CHANGELOG.md)
 
-## 🏗️ Project Structure
+## 🏅 Quality Score
 
-### Backend Structure
-
-```
-apps/backend/
-├── app/
-│   ├── Http/
-│   │   ├── Controllers/      # API Controllers (30+)
-│   │   ├── Middleware/       # Custom middleware
-│   │   └── Requests/         # Form validation
-│   ├── Models/               # Eloquent models (46+)
-│   ├── Services/             # Business logic (21+)
-│   ├── Enums/                # PHP 8.2 enums
-│   └── Observers/            # Model observers
-├── database/
-│   └── migrations/           # Database schema (100+)
-├── routes/
-│   └── api.php              # API routes
-└── tests/                   # PHPUnit tests
-```
-
-### Mobile Structure
-
-```
-apps/mobile/
-├── src/
-│   ├── screens/             # App screens (47+)
-│   ├── components/          # Reusable components (60+)
-│   ├── redux/               # State management
-│   ├── api/                 # API client
-│   ├── navigation/          # Navigation setup
-│   └── i18n/               # Translations (7 languages)
-├── android/                 # Android native code
-└── ios/                     # iOS native code
-```
-
-## 🔑 Key Features
-
-### Order Management
-- Create and publish orders
-- Browse available orders
-- Submit and manage responses
-- Track order progress
-- Mutual completion system
-- Review and rating system
-
-### Subscription System
-- Free, Basic, Pro, Enterprise tiers
-- Stripe-powered recurring billing
-- Usage limits (orders, contacts)
-- Automatic expiration handling
-
-### Wallet System
-- AED currency support
-- Stripe integration
-- Transaction history
-- Escrow for orders
-
-### Referral System
-- Automatic referral code generation
-- 10% cashback on wallet deposits
-- Referral balance tracking
-- Use balance for subscriptions
-
-### AI Design Generation
-- OpenAI GPT-4 integration
-- DALL-E 3 for images
-- Async job processing
-- Design variations
-
-### Real-time Features
-- WebSocket notifications
-- Push notifications (FCM)
-- In-app notifications
-- Live order updates
-
-## 👥 User Types
-
-### 1. Customer (Type: 1)
-- Create orders
-- Receive executor responses
-- Choose executor
-- Pay and review
-
-### 2. Executor (Type: 0)
-- Browse orders
-- Submit responses
-- Portfolio management
-- Get verified
-
-### 3. Mediator (Type: 2)
-- Manage deals
-- 3-step workflow
-- Commission system
-- Quality control
-
-### 4. Admin (Type: 99)
-- User management
-- Verification system
-- Complaint moderation
-- Analytics dashboard
-
-## 🔐 Security
-
-- ✅ Laravel Sanctum authentication
-- ✅ SQL injection protection (Eloquent ORM)
-- ✅ XSS protection
-- ✅ HTTPS enforcement
-- ✅ Password hashing (bcrypt)
-- ✅ CSRF protection
-- ⚠️ Rate limiting (recommended)
-- ⚠️ 2FA (planned)
-
-## 📈 Performance
-
-**Backend:**
-- API Response Time: ~200-400ms avg
-- Database: Indexed queries
-- Caching: Redis
-- Queue: Background jobs
-
-**Mobile:**
-- Bundle Size: 50-80 MB
-- Startup Time: <3s
-- State Management: Redux
-
-## 🧪 Testing
-
-**Backend:**
-```bash
-cd apps/backend
-composer test
-```
-
-**Mobile:**
-```bash
-cd apps/mobile
-npm test
-```
-
-## 📊 Monitoring & Logging
-
-**Recommended Tools:**
-- Sentry (Error tracking)
-- Firebase Crashlytics (Mobile)
-- Laravel Telescope (Development)
-- New Relic / Datadog (APM)
-
-## 🚢 Deployment
-
-### Production
-
-```bash
-# Backend
-cd apps/backend
-./deploy.sh
-
-# Mobile
-cd apps/mobile
-npm run build-ios    # iOS
-npm run build        # Android
-```
-
-### Docker Production
-
-```bash
-docker-compose -f docker-compose.prod.yml up -d
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'feat: add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
-
-### Branch Naming Convention
-
-```
-feature/TASK-123-description
-bugfix/TASK-456-description
-hotfix/critical-issue
-```
-
-### Commit Message Convention
-
-```
-feat(scope): add new feature
-fix(scope): fix bug
-docs(scope): update documentation
-refactor(scope): refactor code
-test(scope): add tests
-```
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
-- **Organization**: [TheMacroeconomicDao](https://github.com/TheMacroeconomicDao)
-- **Repository**: [buildify-platform](https://github.com/TheMacroeconomicDao/buildify-platform)
-
-## 🙏 Acknowledgments
-
-- Laravel Community
-- React Native Community
-- Stripe
-- OpenAI
-- Firebase
-- Orchid Platform
+| Category | Score | Status |
+|----------|-------|--------|
+| Backend | 7.5/10 | ✅ Production-ready |
+| Mobile | 7.0/10 | ✅ Production-ready |
+| Overall | 7.2/10 | ✅ Solid foundation |
 
 ---
 
-**Built with ❤️ by TheMacroeconomicDao Team**
+<div align="center">
+  
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=150&section=footer&text=Building%20Tomorrow%20Today&fontSize=24&fontColor=fff&animation=twinkling&fontAlignY=65" />
+  
+  <sub><b>🏗️ Buildify Platform © 2025 | MIT License | Made with ❤️ by TheMacroeconomicDao</b></sub>
+  
+  <br><br>
+  
+  ⭐ **Star us on GitHub!**
+  
+  [![GitHub stars](https://img.shields.io/github/stars/TheMacroeconomicDao/buildify-platform?style=social)](https://github.com/TheMacroeconomicDao/buildify-platform/stargazers)
+  
+</div>
