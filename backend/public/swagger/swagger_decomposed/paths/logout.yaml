@@ -1,0 +1,24 @@
+post:
+  tags:
+    - auth
+  description: API выхода
+  operationId: api-logout
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Logout/Response.yaml
+    40X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error/Response.yaml
+    50X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error/Response.yaml

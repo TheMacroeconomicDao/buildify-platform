@@ -1,0 +1,119 @@
+post:
+  tags:
+    - subscriptions
+  description:  Отменить текущую подписку
+  responses:
+    '200':
+      description: Подписка будет отменена
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: "Подписка будет отменена в конце текущего периода"
+    '404':
+      description: Подписка не найдена
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    '500':
+      description: Ошибка сервера
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    security:
+      - bearerAuth: [ ]
+components:
+  schemas:
+    Tariff:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Премиум"
+        stripe_product_id:
+          type: string
+          example: "prod_ABC123"
+        stripe_price_id:
+          type: string
+          example: "price_XYZ456"
+        duration_days:
+          type: integer
+          example: 30
+        max_orders:
+          type: integer
+          example: 10
+        max_responses:
+          type: integer
+          example: 50
+        max_contacts:
+          type: integer
+          example: 30
+        price:
+          type: number
+          format: float
+          example: 2990.00
+        is_active:
+          type: boolean
+          example: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    UserSubscription:
+      type: object
+      properties:
+        id:
+          type: integer
+        stripe_id:
+          type: string
+        stripe_status:
+          type: string
+        stripe_price:
+          type: string
+        quantity:
+          type: integer
+        trial_ends_at:
+          type: string
+          format: date-time
+        ends_at:
+          type: string
+          format: date-time
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          example: false
+        message:
+          type: string
+          example: "Error message"
+        error:
+          type: string
+          example: "Detailed error description"
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

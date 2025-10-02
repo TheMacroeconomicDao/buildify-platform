@@ -1,0 +1,31 @@
+post:
+  tags:
+    - orders
+  summary: Отозвать отклик на заказ исполнителем
+  parameters:
+    - name: id
+      in: path
+      description: ID заказа
+      required: true
+      schema:
+        type: integer
+        default: 1
+    - name: responseId
+      in: path
+      description: ID заявки
+      required: true
+      schema:
+        type: integer
+        default: 1
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                description: Результат операции
+                type: boolean
+                example: true

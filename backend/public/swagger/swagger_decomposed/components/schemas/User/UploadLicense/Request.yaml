@@ -1,0 +1,9 @@
+type: object
+required:
+  - license_file
+properties:
+  license_file:
+    type: string
+    format: binary
+    description: Файл лицензии (PDF, JPG, JPEG, PNG, DOC, DOCX, до 10MB)
+    example: license.pdf

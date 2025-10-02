@@ -1,0 +1,29 @@
+[Unit]
+Description=Buildlify WebSocket Server (Soketi)
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/buildlify/backend
+ExecStart=/usr/bin/node /usr/local/bin/soketi start --config=soketi.config.json
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=buildlify-websocket
+
+# Environment variables
+Environment=NODE_ENV=production
+
+# Security settings
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/www/buildlify/backend/storage
+
+[Install]
+WantedBy=multi-user.target

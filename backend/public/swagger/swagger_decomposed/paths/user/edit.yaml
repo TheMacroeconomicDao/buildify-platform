@@ -1,0 +1,42 @@
+post:
+  summary: Редактирование профиля пользователя
+  description: |
+    Редактирование персональных данных пользователя.
+
+    **Особенности валидации:**
+    - Для исполнителей обязательны: name, email, phone, birth_date
+    - Для заказчиков обязательны: name, email, phone, birth_date
+    - Поле `about_me` доступно только исполнителям
+    - Email и телефон должны быть уникальными в системе
+    - Дата рождения должна быть в прошлом
+    - Стаж работы от 0 до 50 лет
+    - Лицензия загружается отдельно через `/user/upload-license` как файл
+  tags:
+    - User
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "../../components/schemas/User/Edit/Request.yaml"
+  responses:
+    200:
+      description: Данные успешно обновлены
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/User/Edit/Response.yaml"
+    400:
+      description: Ошибка валидации
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Error/Response.yaml"
+    401:
+      description: Пользователь не авторизован
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Error/Response.yaml"

@@ -1,0 +1,84 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  title:
+    type: string
+    example: "eeeee"
+  work_direction:
+    type: string
+    example: "qqqq"
+  work_type:
+    type: string
+    example: "eee"
+  description:
+    type: string
+    example: "rrr"
+  city:
+    type: string
+    example: "dfg"
+  address:
+    type: string
+    example: "sdf"
+  planned_start_date:
+    type: string
+    format: date
+    example: "2025-03-04"
+  max_amount:
+    type: string
+    example: "44444.00"
+  author_id:
+    type: integer
+    example: 1
+  status:
+    type: integer
+    example: 0
+  created_at:
+    type: string
+    format: date-time
+    example: "2025-03-02T16:30:50.000000Z"
+  updated_at:
+    type: string
+    format: date-time
+    example: "2025-03-02T16:45:19.000000Z"
+  files:
+    type: array
+    items:
+      $ref: '../File/Resource.yaml'
+  additional:
+    type: object
+    nullable: true
+    properties:
+      response:
+        type: object
+        nullable: true
+        description: Данные об отклике(Если информацию получает откликнувшийся исполнитель)
+        properties:
+          id:
+            type: integer
+            description: Id отклика
+          status:
+            type: integer
+            description: Статус отклика
+      contacts:
+        type: object
+        nullable: true
+        description: Контакты заказчика (если статус отклика допускает это)
+        properties:
+          email:
+            type: string
+          phone:
+            type: string
+          telegram:
+            type: string
+            nullable: true
+          whatsApp:
+            type: string
+            nullable: true
+          facebook:
+            type: string
+            nullable: true
+          viber:
+            type: string
+            nullable: true

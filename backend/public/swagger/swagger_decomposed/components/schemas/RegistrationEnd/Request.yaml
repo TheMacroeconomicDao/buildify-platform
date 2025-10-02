@@ -1,0 +1,33 @@
+type: object
+properties:
+  email:
+    type: string
+    description: Email
+    example: "test@test.ru"
+    required: true
+  name:
+    type: string
+    description: Имя
+    required: true
+  password:
+    type: string
+    description: Пароль
+    required: true
+  confirmed_password:
+    type: string
+    description: Подтверждение пароля
+    required: true
+  code:
+    type: string
+    description: Код подтверждения
+    required: true
+  promo_code:
+    type: string
+    description: Промо код
+    required: false
+  birth_date:
+    type: string
+    format: date
+    description: Дата рождения (YYYY-MM-DD)
+    example: "1990-05-15"
+    required: true

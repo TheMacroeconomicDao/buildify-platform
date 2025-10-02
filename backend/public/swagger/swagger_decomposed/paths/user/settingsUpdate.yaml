@@ -1,0 +1,30 @@
+post:
+  tags:
+    - user
+  description: API редактирование настроек
+  operationId: api-user-settings-update
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          $ref: ../../components/schemas/User/SettingsUpdate/Request.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/User/SettingsUpdate/Response.yaml
+    40X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Error/Response.yaml
+    50X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Error/Response.yaml

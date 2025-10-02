@@ -1,0 +1,17 @@
+type: object
+properties:
+  success:
+    type: boolean
+    example: true
+  result:
+    type: object
+    properties:
+      message:
+        type: string
+        example: "Файл лицензии успешно загружен и отправлен на проверку"
+      file_name:
+        type: string
+        example: "license_123_1672531200.pdf"
+      status:
+        type: string
+        example: "Pending"

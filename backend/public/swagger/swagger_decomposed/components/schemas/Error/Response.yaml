@@ -1,0 +1,10 @@
+type: object
+properties:
+  success:
+    type: string
+    enum:
+      - false
+    description: статус ответа API
+  error:
+    type: string
+    description: описание ошибки

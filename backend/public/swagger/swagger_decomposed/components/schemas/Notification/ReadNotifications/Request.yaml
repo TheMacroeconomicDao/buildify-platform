@@ -1,0 +1,7 @@
+type: object
+properties:
+  ids:
+    type: array
+    items:
+      description: список id нотификаций
+    required: false

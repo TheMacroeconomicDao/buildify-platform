@@ -1,0 +1,63 @@
+post:
+  tags:
+    - orders
+  summary: Принять работы по заказу заказчиком
+  description: Принимает выполненные работы заказчиком и переводит заказ в статус "Закрыт".
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: id
+      in: path
+      description: ID заказа
+      required: true
+      schema:
+        type: integer
+        default: 1
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                description: Результат операции
+                type: boolean
+                example: true
+    '401':
+      description: Не авторизован
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "Unauthenticated."
+    '403':
+      description: Доступ запрещен
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              error:
+                type: string
+                example: "order.customer.only_author_can_accept_work"
+    '400':
+      description: Неверный запрос
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              error:
+                type: string
+                example: "order.customer.order_must_be_awaiting_confirmation" 

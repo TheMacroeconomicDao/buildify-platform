@@ -1,0 +1,88 @@
+get:
+  tags:
+    - executors
+  summary: Получить отзывы на исполнителя
+  description: Возвращает отзывы конкретного исполнителя.
+  parameters:
+    - name: id
+      in: path
+      description: ID исполнителя
+      required: true
+      schema:
+        type: integer
+        default: 1
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              result:
+                type: array
+                description: Данные отзывов
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    order_id:
+                      type: integer
+                    author:
+                      type: object
+                      properties:
+                        avatar:
+                          type: string
+                        name:
+                          type: string
+                    rating:
+                      type: integer
+                    text:
+                      type: string
+post:
+  tags:
+    - executors
+  summary: Оставить отзыв на исполнителя
+  parameters:
+    - name: id
+      in: path
+      description: ID исполнителя
+      required: true
+      schema:
+        type: integer
+        default: 1
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            order_id:
+              type: integer
+              description: ID заказа
+              required: true
+            rating:
+              type: integer
+              description: Оценка
+              required: true
+              minimum: 1
+              maximum: 5
+            text:
+              type: string
+              description: Отзыв
+              required: true
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true

@@ -1,0 +1,38 @@
+[Unit]
+Description=Buildlify Queue Worker
+After=network.target postgresql.service redis-server.service
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+Restart=always
+RestartSec=5s
+StartLimitInterval=60s
+StartLimitBurst=3
+
+# Environment
+Environment=LARAVEL_ENV=production
+
+# Command
+ExecStart=/usr/bin/php /var/www/buildlify/artisan queue:work redis --queue=default,high,low --sleep=3 --tries=3 --max-time=3600 --timeout=300
+WorkingDirectory=/var/www/buildlify
+
+# Process Management
+KillMode=mixed
+KillSignal=SIGTERM
+TimeoutStopSec=30
+
+# Security
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/www/buildlify/storage
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=buildlify-queue
+
+[Install]
+WantedBy=multi-user.target

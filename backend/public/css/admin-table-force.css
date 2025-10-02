@@ -1,0 +1,288 @@
+/* ПРИНУДИТЕЛЬНОЕ ИСПРАВЛЕНИЕ ТАБЛИЦ - МАКСИМАЛЬНЫЙ ПРИОРИТЕТ */
+
+/* Убираем абсолютно ВСЕ ограничения ширины */
+* .table,
+* .table *,
+* table,
+* table *,
+.table-responsive .table,
+.table-responsive .table *,
+.bg-white .table,
+.bg-white .table *,
+body .table,
+body .table *,
+html .table,
+html .table * {
+    max-width: none !important;
+    width: auto !important;
+    min-width: auto !important;
+}
+
+/* Принудительно устанавливаем table-layout для ВСЕХ таблиц */
+.table,
+table.table,
+.table-responsive table,
+.bg-white table,
+body table.table,
+html table.table {
+    table-layout: auto !important;
+    width: 100% !important;
+    border-collapse: collapse !important;
+}
+
+/* АГРЕССИВНОЕ переопределение для ВСЕХ ячеек */
+.table th,
+.table td,
+table.table th,
+table.table td,
+.table-responsive .table th,
+.table-responsive .table td,
+.bg-white .table th,
+.bg-white .table td,
+body .table th,
+body .table td,
+html .table th,
+html .table td {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    hyphens: auto !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    max-width: none !important;
+    width: auto !important;
+    min-width: 100px !important;
+    box-sizing: border-box !important;
+    padding: 12px 15px !important;
+}
+
+/* Убираем ЛЮБЫЕ фиксированные ширины из inline стилей */
+.table th[style*="width"],
+.table td[style*="width"],
+.table th[style*="min-width"],
+.table td[style*="min-width"],
+.table th[style*="max-width"],
+.table td[style*="max-width"] {
+    width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
+}
+
+/* Исключение ТОЛЬКО для первой колонки (ID) */
+.table th:first-child,
+.table td:first-child {
+    width: 80px !important;
+    min-width: 80px !important;
+    max-width: 80px !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+}
+
+/* Принудительно убираем text-truncate и подобные классы */
+.table .text-truncate,
+.table .text-nowrap,
+.table .text-ellipsis {
+    white-space: normal !important;
+    text-overflow: clip !important;
+    overflow: visible !important;
+    max-width: none !important;
+}
+
+/* Переопределяем Bootstrap utility классы в таблицах */
+.table .w-25,
+.table .w-50,
+.table .w-75,
+.table .w-100,
+.table .mw-100 {
+    width: auto !important;
+    max-width: none !important;
+}
+
+/* Убираем любые CSS переменные, которые могут ограничивать ширину */
+.table {
+    --bs-table-cell-padding-x: 15px !important;
+    --bs-table-cell-padding-y: 12px !important;
+}
+
+/* Принудительно для всех вложенных элементов */
+.table th > *,
+.table td > *,
+.table th span,
+.table td span,
+.table th div,
+.table td div,
+.table th p,
+.table td p {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: none !important;
+    width: auto !important;
+}
+
+/* Специально для длинных текстовых полей - они должны расширяться */
+.table td[data-column*="work"],
+.table th[data-column*="work"],
+.table td[data-column*="description"],
+.table th[data-column*="description"],
+.table td[data-column*="content"],
+.table th[data-column*="content"],
+.table td[data-column*="message"],
+.table th[data-column*="message"],
+.table td[data-column*="comment"],
+.table th[data-column*="comment"] {
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    min-width: 200px !important;
+    max-width: none !important;
+    width: auto !important;
+}
+
+/* Убираем любые ограничения контейнера */
+.table-responsive {
+    overflow-x: auto !important;
+    width: 100% !important;
+}
+
+/* Принудительно растягиваем таблицу на всю ширину контейнера */
+.bg-white .table-responsive,
+.card .table-responsive,
+.rounded.shadow-sm .table-responsive {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.bg-white .table-responsive .table,
+.card .table-responsive .table,
+.rounded.shadow-sm .table-responsive .table {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+}
+
+/* Принудительно переопределяем Orchid специфичные стили */
+.orchid-table th,
+.orchid-table td,
+[data-controller="table"] th,
+[data-controller="table"] td {
+    width: auto !important;
+    max-width: none !important;
+    min-width: auto !important;
+    white-space: normal !important;
+}
+
+/* Максимальный приоритет через !important и высокую специфичность */
+body .bg-white.rounded.shadow-sm .table-responsive .table th:not(:first-child),
+body .bg-white.rounded.shadow-sm .table-responsive .table td:not(:first-child) {
+    width: auto !important;
+    min-width: 100px !important;
+    max-width: none !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    text-overflow: clip !important;
+    overflow: visible !important;
+}
+
+/* Последняя попытка - перебиваем ЛЮБЫЕ возможные стили */
+.table th:nth-child(n+2),
+.table td:nth-child(n+2) {
+    width: auto !important;
+    min-width: 100px !important;
+    max-width: none !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}
+
+/* Принудительно для мобильных устройств */
+@media (max-width: 768px) {
+    .table th,
+    .table td {
+        padding: 8px !important;
+        font-size: 13px !important;
+    }
+    
+    .table th:first-child,
+    .table td:first-child {
+        width: 50px !important;
+        min-width: 50px !important;
+        max-width: 50px !important;
+    }
+}
+
+/* Финальное решение - используем CSS Grid для принудительного распределения */
+.table {
+    display: table !important;
+    table-layout: auto !important;
+}
+
+.table thead,
+.table tbody {
+    display: table-header-group !important;
+}
+
+.table tbody {
+    display: table-row-group !important;
+}
+
+.table tr {
+    display: table-row !important;
+}
+
+.table th,
+.table td {
+    display: table-cell !important;
+    vertical-align: middle !important;
+}
+
+/* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ РАСТЯГИВАНИЯ ТАБЛИЦ НА ВСЮ ШИРИНУ */
+
+/* Принудительно для всех карточек с таблицами - ИСКЛЮЧАЯ САЙДБАР */
+.card:not(.aside):not(.sidebar):has(.table),
+.bg-white:not(.aside):not(.sidebar):has(.table),
+.rounded.shadow-sm:not(.aside):not(.sidebar):has(.table) {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Убираем padding/margin которые могут сжимать таблицу */
+.bg-white.rounded.shadow-sm .table-responsive {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+/* Принудительно для всех контейнеров таблиц */
+div[class*="bg-white"],
+div[class*="card"],
+div[class*="rounded"] {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Специально для Orchid контейнеров */
+.orchid .table-responsive,
+[data-controller*="table"] .table-responsive {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Убираем любые inline стили которые могут ограничивать ширину */
+.table-responsive[style*="width"],
+.table[style*="width"],
+div[style*="width"] .table-responsive {
+    width: 100% !important;
+}
+
+/* Финальное решение - максимальная специфичность */
+body .bg-white.rounded.shadow-sm,
+body .card .table-responsive,
+body div[class*="bg-white"] .table-responsive {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    box-sizing: border-box !important;
+}

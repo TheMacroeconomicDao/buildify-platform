@@ -1,0 +1,9 @@
+type: object
+properties:
+  success:
+    type: boolean
+    example: true
+  result:
+    type: string
+    description: Сообщение об успешном обновлении
+    example: "Данные пользователя успешно обновлены"

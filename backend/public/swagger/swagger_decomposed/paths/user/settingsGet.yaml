@@ -1,0 +1,31 @@
+get:
+  tags:
+    - user
+  description: API получения списка локализации
+  operationId: api-user-settings-get
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: string
+                enum: [ true, false ]
+                description: статус ответа API
+              result:
+                $ref: ../../components/schemas/User/SettingsGet/Response.yaml
+    40X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Error/Response.yaml
+    50X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Error/Response.yaml

@@ -1,0 +1,127 @@
+/* ИСПРАВЛЕНИЕ ШИРИНЫ ТАБЛИЦ В КАРТОЧКАХ */
+
+/* ИСКЛЮЧЕНИЯ ДЛЯ САЙДБАРА - НЕ ПРИМЕНЯЕМ СТИЛИ */
+.aside,
+.sidebar,
+.nav-sidebar,
+.orchid-aside,
+[data-controller*="aside"],
+[data-controller*="sidebar"] {
+    width: auto !important;
+    max-width: none !important;
+    min-width: auto !important;
+}
+
+.aside *,
+.sidebar *,
+.nav-sidebar *,
+.orchid-aside * {
+    width: auto !important;
+    max-width: none !important;
+}
+
+/* Максимальный приоритет - убираем все ограничения ширины */
+* .table-responsive,
+* .table-responsive .table,
+body * .table-responsive,
+body * .table-responsive .table,
+html * .table-responsive,
+html * .table-responsive .table {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+}
+
+/* Принудительно ТОЛЬКО для контейнеров с таблицами */
+.bg-white:has(.table-responsive),
+.card:has(.table-responsive),
+.rounded:has(.table-responsive),
+.shadow-sm:has(.table-responsive),
+div[class*="bg-"]:has(.table-responsive),
+div[class*="card"]:has(.table-responsive),
+div[class*="rounded"]:has(.table-responsive) {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Убираем margin и padding которые могут сжимать содержимое */
+.bg-white .table-responsive,
+.card .table-responsive,
+.rounded .table-responsive {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Принудительно переопределяем Bootstrap классы ТОЛЬКО для таблиц */
+.table-responsive .container-fluid,
+.table-responsive .container,
+.table-responsive .row,
+.table-responsive .col,
+.table-responsive .col-12,
+.table-responsive div[class*="col-"],
+div:has(.table-responsive) .container-fluid,
+div:has(.table-responsive) .container,
+div:has(.table-responsive) .row {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Специально для Orchid Layout - ТОЛЬКО для контента с таблицами */
+.screen-content:has(.table-responsive),
+.workspace:has(.table-responsive) {
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Убираем любые inline стили */
+[style*="width"] .table-responsive,
+[style*="max-width"] .table-responsive,
+div[style*="width"]:has(.table-responsive) {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Финальное решение с максимальной специфичностью */
+html body div.bg-white.rounded.shadow-sm .table-responsive,
+html body div.bg-white.rounded.shadow-sm .table-responsive .table,
+html body .card .table-responsive,
+html body .card .table-responsive .table {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Убираем flexbox ограничения ТОЛЬКО для контейнеров с таблицами */
+.d-flex:has(.table-responsive),
+.flex-column:has(.table-responsive),
+.flex-row:has(.table-responsive) {
+    width: 100% !important;
+}
+
+/* Принудительно для всех таблиц */
+table,
+.table {
+    width: 100% !important;
+    table-layout: auto !important;
+    border-collapse: collapse !important;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (min-width: 768px) {
+    .table-responsive,
+    .table-responsive .table {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .table-responsive {
+        overflow-x: auto !important;
+        width: 100% !important;
+    }
+}

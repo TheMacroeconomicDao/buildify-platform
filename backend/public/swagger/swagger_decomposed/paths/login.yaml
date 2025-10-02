@@ -1,0 +1,30 @@
+post:
+  tags:
+    - auth
+  description: API авторизации
+  operationId: api-login
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Login/Request.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Login/Response.yaml
+    40X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error/Response.yaml
+    50X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Error/Response.yaml

@@ -1,0 +1,16 @@
+type: object
+properties:
+  id:
+    type: integer
+    example: 1
+  file_path:
+    type: string
+    example: "attachments/OxcmIfzy4TMPB8JKWStFyVLSGSSAJHrfCjDkhsJ9.jpg"
+  created_at:
+    type: string
+    format: date-time
+    example: "2025-03-02T16:30:50.000000Z"
+  updated_at:
+    type: string
+    format: date-time
+    example: "2025-03-02T16:30:50.000000Z"

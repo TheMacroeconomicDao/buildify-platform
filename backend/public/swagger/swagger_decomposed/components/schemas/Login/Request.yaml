@@ -1,0 +1,11 @@
+type: object
+properties:
+  email:
+    type: string
+    description: Email
+    example: 'test@test.ru'
+    required: true
+  password:
+    type: string
+    description: Пароль
+    required: true

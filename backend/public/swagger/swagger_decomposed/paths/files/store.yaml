@@ -1,0 +1,33 @@
+post:
+  tags:
+    - attachments
+  summary: Загрузка вложения
+  description: Загрузка вложения
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            file:
+              type: string
+              format: binary
+              description: Файл вложения
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              result:
+                type: object
+                properties:
+                  file_id:
+                    type: integer
+                    example: 1

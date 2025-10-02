@@ -1,0 +1,130 @@
+get:
+  tags:
+    - orders
+  summary: Получить данные заказа
+  description: Возвращает данные конкретного заказа.
+  parameters:
+    - name: id
+      in: path
+      description: ID заказа
+      required: true
+      schema:
+        type: integer
+        default: 1
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              result:
+                $ref: '../../components/schemas/Order/Resource.yaml'
+post:
+  tags:
+    - orders
+  summary: Обновление заказа
+  description: Обновляет информацию о заказе по его идентификатору.
+  parameters:
+    - name: id
+      in: path
+      description: ID заказа
+      required: true
+      schema:
+        type: integer
+        default: 1
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          required:
+            - title
+            - work_direction
+            - work_type
+            - city
+            - address
+            - planned_start_date
+            - max_amount
+          properties:
+            title:
+              type: string
+              description: Название заказа.
+            work_direction:
+              type: string
+              description: Направление работы.
+            work_type:
+              type: string
+              description: Тип работы.
+            description:
+              type: string
+              description: Описание заказа (необязательное поле).
+            city:
+              type: string
+              description: Город, где будет выполняться работа.
+            address:
+              type: string
+              description: Адрес, где будет выполняться работа.
+            planned_start_date:
+              type: string
+              format: date
+              description: Планируемая дата начала работы.
+            max_amount:
+              type: number
+              format: float
+              description: Максимальная сумма заказа.
+            attachments:
+              type: array
+              items:
+                type: integer
+              description: Массив файлов для прикрепления к заказу (необязательное поле).
+  responses:
+    '200':
+      description: Успешное обновление заказа
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              result:
+                $ref: '../../components/schemas/Order/Resource.yaml'
+    '400':
+      description: Неверные входные данные
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: "Validation failed"
+              errors:
+                type: object
+                example:
+                  id: ["The id field is required."]
+                  title: ["The title field is required."]
+    '404':
+      description: Заказ не найден
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: "Order not found"
+

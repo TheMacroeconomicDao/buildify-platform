@@ -1,0 +1,10 @@
+type: object
+properties:
+  password:
+    type: string
+    description: Старый пароль
+    required: true
+  new_password:
+    type: string
+    description: Новый пароль
+    required: true

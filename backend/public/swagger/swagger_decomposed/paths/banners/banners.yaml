@@ -1,0 +1,44 @@
+get:
+  tags:
+    - banners
+  summary: Получить список баннеров
+  description: Возвращает список всех активных баннеров.
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              result:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: "Test"
+                    description:
+                      type: string
+                      example: "Test description"
+                    image:
+                      type: string
+                      example: "banners/LmYFqdorfeYdaKjrPLmuM9fe8bPQBXwrRabTCtre.jpg"
+                    status:
+                      type: string
+                      example: "active"
+                    created_at:
+                      type: string
+                      format: date-time
+                      example: "2025-03-02T15:54:33.000000Z"
+                    updated_at:
+                      type: string
+                      format: date-time
+                      example: "2025-03-02T15:54:33.000000Z"

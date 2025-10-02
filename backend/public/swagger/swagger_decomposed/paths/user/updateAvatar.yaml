@@ -1,0 +1,30 @@
+post:
+  tags:
+    - user
+  description: API редактирования аватара
+  operationId: api-user-update-avatar
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          $ref: ../../components/schemas/User/UpdateAvatar/Request.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/User/UpdateAvatar/Response.yaml
+    40X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Error/Response.yaml
+    50X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Error/Response.yaml

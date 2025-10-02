@@ -1,0 +1,195 @@
+/* ПРОСТЫЕ АДАПТИВНЫЕ ТАБЛИЦЫ */
+
+/* Контейнер таблицы */
+.table-responsive {
+    overflow-x: auto !important;
+    margin: 0 !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 6px !important;
+    width: 100% !important;
+    max-width: none !important;
+}
+
+/* Основная таблица */
+.table {
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    table-layout: auto !important;
+    border-collapse: collapse !important;
+}
+
+/* Заголовки */
+.table thead th {
+    background: #f8f9fa !important;
+    color: #495057 !important;
+    font-weight: 600 !important;
+    padding: 12px 15px !important;
+    border-bottom: 2px solid #dee2e6 !important;
+    border-right: 1px solid #dee2e6 !important;
+    text-align: left !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: auto !important;
+}
+
+.table thead th:last-child {
+    border-right: none !important;
+    width: 120px !important;
+    min-width: 120px !important;
+}
+
+/* Ячейки */
+.table tbody td {
+    padding: 12px 15px !important;
+    border-bottom: 1px solid #dee2e6 !important;
+    border-right: 1px solid #dee2e6 !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    width: auto !important;
+    text-align: left !important;
+}
+
+.table tbody td:last-child {
+    border-right: none !important;
+    text-align: left !important;
+}
+
+/* Строки */
+.table tbody tr:hover {
+    background-color: #f5f5f5 !important;
+}
+
+/* Адаптивные колонки - автоматическая ширина */
+.table {
+    table-layout: auto !important;
+    min-width: max-content !important;
+}
+
+.table th,
+.table td {
+    width: auto !important;
+    max-width: none !important;
+}
+
+/* Колонки с длинным текстом получают больше места */
+.table th:nth-child(2),
+.table td:nth-child(2),
+.table th:nth-child(3),
+.table td:nth-child(3) {
+    min-width: 180px !important;
+}
+
+/* Предпоследняя колонка (обычно даты) */
+.table th:nth-last-child(2),
+.table td:nth-last-child(2) {
+    min-width: 200px !important;
+}
+
+/* Последняя колонка тоже может содержать даты */
+.table th:last-child,
+.table td:last-child {
+    min-width: 200px !important;
+}
+
+/* Общая минимальная ширина для всех колонок увеличена */
+.table th {
+    min-width: 160px !important;
+}
+
+.table td {
+    min-width: 160px !important;
+}
+
+
+
+/* Кнопки и действия */
+.table .btn {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+}
+
+.table .dropdown-toggle {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+}
+
+/* Статусы */
+.table .badge {
+    font-size: 11px !important;
+    padding: 3px 6px !important;
+}
+
+/* User works category labels */
+.form-group label[for*="category_"] {
+    font-weight: bold !important;
+    font-size: 16px !important;
+    color: #333 !important;
+    margin-bottom: 15px !important;
+    margin-top: 20px !important;
+    padding-bottom: 8px !important;
+    border-bottom: 2px solid #e9ecef !important;
+    display: block !important;
+}
+
+.form-group label[for*="category_"]:first-child {
+    margin-top: 0 !important;
+}
+
+/* User works checkboxes wrapping */
+.form-check-group {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+}
+
+.form-check-group .form-check {
+    flex: 0 0 auto !important;
+    margin-right: 15px !important;
+    margin-bottom: 10px !important;
+    white-space: nowrap !important;
+}
+
+/* Ensure checkboxes don't overflow container */
+.card-body .form-check-group {
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+/* Group layout for better wrapping */
+.group.row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    margin: 0 !important;
+}
+
+.group.row > .col {
+    flex: 0 0 auto !important;
+    padding: 5px !important;
+    max-width: none !important;
+}
+
+/* Responsive checkbox layout */
+@media (max-width: 768px) {
+    .form-check-group .form-check {
+        flex: 0 0 calc(50% - 10px) !important;
+    }
+    
+    .group.row > .col {
+        flex: 0 0 calc(50% - 10px) !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-check-group .form-check {
+        flex: 0 0 100% !important;
+    }
+    
+    .group.row > .col {
+        flex: 0 0 100% !important;
+    }
+}

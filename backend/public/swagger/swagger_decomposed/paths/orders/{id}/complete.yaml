@@ -1,0 +1,63 @@
+post:
+  tags:
+    - orders
+  summary: Завершить заказ исполнителем
+  description: Завершает заказ исполнителем и переводит его в статус "Ждет подтверждения". Может быть вызван из статусов "В работе" или "Отклонен".
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: id
+      in: path
+      description: ID заказа
+      required: true
+      schema:
+        type: integer
+        default: 1
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                description: Результат операции
+                type: boolean
+                example: true
+    '401':
+      description: Не авторизован
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "Unauthenticated."
+    '403':
+      description: Доступ запрещен
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              error:
+                type: string
+                example: "order.executor.only_executor_can_complete_order"
+    '400':
+      description: Неверный запрос
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: false
+              error:
+                type: string
+                example: "order.executor.order_must_be_in_work" 

@@ -1,0 +1,20 @@
+type: object
+required:
+  - executor_id
+  - status
+properties:
+  executor_id:
+    type: integer
+    description: ID исполнителя
+    example: 123
+  status:
+    type: integer
+    description: Статус верификации (1-Approved, 2-Rejected)
+    enum: [1, 2]
+    example: 1
+  comment:
+    type: string
+    maxLength: 500
+    nullable: true
+    description: Комментарий администратора
+    example: "Документы проверены и одобрены"

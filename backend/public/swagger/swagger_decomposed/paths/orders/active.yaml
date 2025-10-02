@@ -1,0 +1,57 @@
+post:
+  tags:
+    - orders
+  summary: Получение списка активных заказов
+  description:
+    API-1 Получить активные заказы исполнителя
+    API-15 Получить активные заказы заказчика
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              result:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    title:
+                      type: string
+                      example: "eeeee"
+                    work_direction:
+                      type: string
+                      example: "qqqq"
+                    work_type:
+                      type: string
+                      example: "eee"
+                    description:
+                      type: string
+                      example: "rrr"
+                    city:
+                      type: string
+                      example: "dfg"
+                    address:
+                      type: string
+                      example: "sdf"
+                    planned_start_date:
+                      type: string
+                      format: date
+                      example: "2025-03-04"
+                    max_amount:
+                      type: string
+                      example: "44444.00"
+                    files_count:
+                      type: integer
+                      example: 0
+                    status:
+                      type: integer
+                      example: 0

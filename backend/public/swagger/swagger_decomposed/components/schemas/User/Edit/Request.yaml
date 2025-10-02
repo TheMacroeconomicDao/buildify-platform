@@ -1,0 +1,61 @@
+type: object
+required:
+  - name
+  - email
+  - phone
+  - birth_date
+properties:
+  name:
+    type: string
+    description: Имя пользователя
+    example: "Иван Иванов"
+    maxLength: 255
+  email:
+    type: string
+    format: email
+    description: Email (должен быть уникальным)
+    example: "user@example.com"
+  phone:
+    type: string
+    description: Телефон в международном формате
+    example: "+79123456789"
+  birth_date:
+    type: string
+    format: date
+    description: Дата рождения (обязательное поле)
+    example: "1990-05-15"
+  work_experience:
+    type: integer
+    nullable: true
+    minimum: 0
+    maximum: 50
+    description: Стаж работы в годах (необязательное поле)
+    example: 5
+  about_me:
+    type: string
+    nullable: true
+    description: О себе (только для исполнителей)
+    example: "Опытный разработчик с 5-летним стажем"
+    maxLength: 1000
+  telegram:
+    type: string
+    nullable: true
+    description: Логин/ссылка Telegram
+    example: "@username"
+  whatsApp:
+    type: string
+    nullable: true
+    description: Номер WhatsApp (для заказчиков проверяется формат телефона)
+    example: "+79123456789"
+  facebook:
+    type: string
+    nullable: true
+    description: Ссылка или логин Facebook
+    example: "https://facebook.com/user"
+  viber:
+    type: string
+    nullable: true
+    description: Номер или логин Viber
+    example: "+79123456789"
+
+additionalProperties: false

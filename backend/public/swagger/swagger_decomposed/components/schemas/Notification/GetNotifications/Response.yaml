@@ -1,0 +1,12 @@
+type: object
+properties:
+  success:
+    type: boolean
+  result:
+    type: object
+    properties:
+      notifications:
+        type: array
+        items:
+          $ref: Notification.yaml
+

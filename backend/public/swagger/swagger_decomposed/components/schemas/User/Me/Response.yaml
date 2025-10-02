@@ -1,0 +1,55 @@
+type: object
+properties:
+  success:
+    type: boolean
+  user:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      email:
+        type: string
+      email_verified_at:
+        type: string
+        format: date-time
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+      avatar:
+        type: string
+      status:
+        type: integer
+      localization:
+        type: string
+      birth_date:
+        type: string
+        format: date
+        description: Дата рождения
+      work_experience:
+        type: integer
+        description: Стаж работы в годах
+      license_file_path:
+        type: string
+        nullable: true
+        description: Путь к файлу лицензии
+        example: "licenses/license_123_1672531200.pdf"
+      verification_status:
+        type: integer
+        description: Статус верификации (0-Pending, 1-Approved, 2-Rejected, 3-NotRequired)
+        example: 1
+      verification_comment:
+        type: string
+        nullable: true
+        description: Комментарий администратора при верификации
+        example: "Документы проверены и одобрены"
+      verified_at:
+        type: string
+        format: date-time
+        nullable: true
+        description: Дата верификации
+        example: "2023-12-31T23:59:59.000000Z"

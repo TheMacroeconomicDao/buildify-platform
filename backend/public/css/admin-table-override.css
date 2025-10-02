@@ -1,0 +1,160 @@
+/* Принудительное переопределение стилей таблиц Orchid */
+
+/* ВАЖНО: Этот файл должен загружаться последним для переопределения всех стилей Orchid */
+
+/* Полное переопределение table-layout */
+.table,
+table.table,
+.table-responsive .table,
+.table-responsive table.table {
+    table-layout: auto !important;
+    width: 100% !important;
+}
+
+/* Убираем все фиксированные ширины колонок */
+.table th,
+.table td,
+table.table th,
+table.table td {
+    width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    overflow: visible !important;
+}
+
+/* Исключение только для первой колонки (обычно ID) */
+.table th:first-child,
+.table td:first-child {
+    width: 80px !important;
+    min-width: 80px !important;
+    max-width: 80px !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+}
+
+/* Переопределяем любые inline стили */
+.table th[style],
+.table td[style] {
+    width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
+}
+
+/* Исключение для первой колонки даже с inline стилями */
+.table th:first-child[style],
+.table td:first-child[style] {
+    width: 80px !important;
+    min-width: 80px !important;
+    max-width: 80px !important;
+}
+
+/* Убираем text-overflow ellipsis */
+.table th,
+.table td {
+    text-overflow: clip !important;
+    overflow: visible !important;
+}
+
+/* Принудительно разрешаем перенос текста */
+.table th *,
+.table td *,
+.table th span,
+.table td span,
+.table th div,
+.table td div {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: none !important;
+}
+
+/* Убираем любые ограничения контейнера таблицы */
+.table-responsive {
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+}
+
+/* Для очень длинных таблиц */
+.table-responsive .table {
+    min-width: 100% !important;
+}
+
+/* Переопределение для Bootstrap классов */
+.w-25, .w-50, .w-75, .w-100 {
+    width: auto !important;
+}
+
+/* Переопределение для Orchid специфичных классов */
+.table .text-truncate,
+.table .text-nowrap {
+    white-space: normal !important;
+    text-overflow: clip !important;
+    overflow: visible !important;
+    max-width: none !important;
+}
+
+/* Убираем фиксированную высоту строк */
+.table tr,
+.table tbody tr {
+    height: auto !important;
+    min-height: auto !important;
+}
+
+/* Убираем ограничения на содержимое ячеек */
+.table td > *,
+.table th > * {
+    max-width: none !important;
+    width: auto !important;
+}
+
+/* Специально для длинного текста */
+.table td.long-text,
+.table th.long-text {
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (min-width: 768px) {
+    .table th,
+    .table td {
+        padding: 12px 15px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .table th,
+    .table td {
+        padding: 8px 10px !important;
+        font-size: 13px !important;
+    }
+    
+    .table th:first-child,
+    .table td:first-child {
+        width: 60px !important;
+        min-width: 60px !important;
+        max-width: 60px !important;
+    }
+}
+
+/* Принудительное переопределение любых CSS переменных */
+:root {
+    --table-cell-padding-x: 15px !important;
+    --table-cell-padding-y: 12px !important;
+}
+
+/* Последний шанс - переопределяем через селекторы высокой специфичности */
+body .table-responsive .table th:not(:first-child),
+body .table-responsive .table td:not(:first-child),
+body .bg-white .table th:not(:first-child),
+body .bg-white .table td:not(:first-child) {
+    width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+}

@@ -1,0 +1,141 @@
+get:
+  tags:
+    - orders
+  summary: Получить заказы поиска
+  parameters:
+    - name: sort_by
+      in: query
+      description: Поле сортировки
+      required: true
+      schema:
+        type: string
+        enum:
+          - max_amount
+          - planned_start_date
+    - name: sort_direction
+      in: query
+      description: Направление сортировки
+      required: true
+      schema:
+        type: string
+        enum:
+          - desc
+          - asc
+  responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              result:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    title:
+                      type: string
+                      example: "eeeee"
+                    planned_start_date:
+                      type: string
+                      format: date
+                      example: "2025-03-04"
+                    address:
+                      type: string
+                      example: "sdf"
+                    max_amount:
+                      type: string
+                      example: "44444.00"
+                    files_count:
+                      type: integer
+                      example: 0
+                    status:
+                      type: integer
+                      example: 0
+post:
+  tags:
+    - orders
+  summary: Создать новый заказ
+  description: Создает новый заказ с возможностью добавления вложений.
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          required:
+            - title
+            - work_direction
+            - work_type
+            - city
+            - address
+            - planned_start_date
+            - max_amount
+          properties:
+            title:
+              type: string
+              example: "ыфаыв"
+              description: Название заказа
+            work_direction:
+              type: string
+              example: "фыва"
+              description: Направление работ
+            work_type:
+              type: string
+              example: "фыва"
+              description: Тип работ
+            description:
+              type: string
+              example: "фываф ыва фыв"
+              description: Описание заказа
+            city:
+              type: string
+              example: "ывфаыв"
+              description: Город
+            address:
+              type: string
+              example: "фывафыв"
+              description: Адрес
+            planned_start_date:
+              type: string
+              format: date
+              example: "2025-03-04"
+              description: Плановая дата начала. Форма ГГГГ-ММ-ДД
+            max_amount:
+              type: number
+              format: float
+              example: 33333
+              description: Максимальная сумма
+            author_id:
+              type: integer
+              example: 1
+              description: ID автора
+            status:
+              type: integer
+              example: 0
+              description: Статус заказа
+            attachments:
+              type: array
+              items:
+                type: integer
+                description: id файла
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              result:
+                $ref: '../components/schemas/Order/Resource.yaml'

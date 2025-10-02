@@ -1,0 +1,69 @@
+get:
+  tags:
+    - orders
+  summary: Получение откликов на заказ
+  parameters:
+    - name: id
+      in: path
+      description: ID заказа
+      required: true
+      schema:
+        type: integer
+        default: 1
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              result:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID отклика
+                  executor:
+                    type: object
+                    description: Данные исполнителя
+                    properties:
+                      id:
+                        type: integer
+                      avatar:
+                        type: string
+                      name:
+                        type: string
+                      orders_count:
+                        type: integer
+                      rating:
+                        type: number
+                      reviews_count:
+                        type: integer
+post:
+  tags:
+    - orders
+  summary: Откликнуться на заказ
+  parameters:
+    - name: id
+      in: path
+      description: ID заказа
+      required: true
+      schema:
+        type: integer
+        default: 1
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                description: Результат операции
+                type: boolean
+                example: true

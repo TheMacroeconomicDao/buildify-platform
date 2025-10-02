@@ -1,0 +1,17 @@
+type: object
+properties:
+  code:
+    type: integer
+    description: Код подтверждения из email (4 цифры)
+    example: 1234
+    required: true
+  new_password:
+    type: string
+    description: Новый пароль (минимум 8 символов, латинские буквы, цифры, спецсимволы)
+    example: "NewPassword123!"
+    required: true
+  confirmed_password:
+    type: string
+    description: Подтверждение нового пароля (должно совпадать с new_password)
+    example: "NewPassword123!"
+    required: true

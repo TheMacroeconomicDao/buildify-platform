@@ -1,0 +1,10 @@
+type: object
+properties:
+  success:
+    type: boolean
+    description: Статус успешности операции
+    example: true
+  result:
+    type: string
+    description: Сообщение о результате удаления
+    example: "Account deleted successfully"

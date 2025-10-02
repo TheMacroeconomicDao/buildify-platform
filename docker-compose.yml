@@ -1,0 +1,182 @@
+version: '3.8'
+
+services:
+  # Backend Application
+  backend:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    container_name: buildify-backend
+    ports:
+      - "3000:80"
+    environment:
+      - APP_ENV=development
+      - APP_DEBUG=true
+      - DB_CONNECTION=pgsql
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=buildify
+      - DB_USERNAME=buildify
+      - DB_PASSWORD=buildify123
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - QUEUE_CONNECTION=redis
+      - CACHE_DRIVER=redis
+      - SESSION_DRIVER=redis
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./apps/backend:/var/www/html
+      - backend-storage:/var/www/html/storage
+    networks:
+      - buildify-network
+    restart: unless-stopped
+
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: buildify-postgres
+    environment:
+      - POSTGRES_DB=buildify
+      - POSTGRES_USER=buildify
+      - POSTGRES_PASSWORD=buildify123
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - buildify-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U buildify"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache & Queue
+  redis:
+    image: redis:7-alpine
+    container_name: buildify-redis
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - buildify-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  # Soketi WebSocket Server
+  soketi:
+    image: quay.io/soketi/soketi:latest-16-alpine
+    container_name: buildify-soketi
+    ports:
+      - "6001:6001"
+      - "9601:9601"
+    environment:
+      - SOKETI_DEBUG=1
+      - SOKETI_DEFAULT_APP_ID=buildify-app
+      - SOKETI_DEFAULT_APP_KEY=buildify-key
+      - SOKETI_DEFAULT_APP_SECRET=buildify-secret
+    networks:
+      - buildify-network
+    restart: unless-stopped
+
+  # Queue Worker (Laravel)
+  queue:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    container_name: buildify-queue
+    command: php artisan queue:work redis --sleep=3 --tries=3 --max-time=3600
+    environment:
+      - APP_ENV=development
+      - DB_CONNECTION=pgsql
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=buildify
+      - DB_USERNAME=buildify
+      - DB_PASSWORD=buildify123
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - QUEUE_CONNECTION=redis
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./apps/backend:/var/www/html
+    networks:
+      - buildify-network
+    restart: unless-stopped
+
+  # Scheduler (Laravel)
+  scheduler:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    container_name: buildify-scheduler
+    command: php artisan schedule:work
+    environment:
+      - APP_ENV=development
+      - DB_CONNECTION=pgsql
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=buildify
+      - DB_USERNAME=buildify
+      - DB_PASSWORD=buildify123
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./apps/backend:/var/www/html
+    networks:
+      - buildify-network
+    restart: unless-stopped
+
+  # pgAdmin (Database Management)
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: buildify-pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@buildify.local
+      - PGADMIN_DEFAULT_PASSWORD=admin123
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - buildify-network
+    restart: unless-stopped
+
+  # Redis Commander (Redis Management)
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: buildify-redis-commander
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    networks:
+      - buildify-network
+    restart: unless-stopped
+
+networks:
+  buildify-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+  backend-storage:
+    driver: local

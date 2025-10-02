@@ -1,0 +1,46 @@
+{
+  "debug": true,
+  "port": 6001,
+  "host": "0.0.0.0",
+  "metrics": {
+    "enabled": true,
+    "port": 9601
+  },
+  "cors": {
+    "allowOrigins": ["*"],
+    "allowMethods": ["GET", "POST"],
+    "allowHeaders": ["*"]
+  },
+  "ssl": {
+    "enabled": false
+  },
+  "appManager": {
+    "driver": "array",
+    "array": {
+      "apps": [
+        {
+          "id": "buildlify-app",
+          "key": "buildlify-key",
+          "secret": "buildlify-secret",
+          "maxConnections": 1000,
+          "enableClientMessages": true,
+          "enabled": true,
+          "maxBackendEventsPerSecond": 500,
+          "maxClientEventsPerSecond": 100,
+          "maxReadRequestsPerSecond": 500,
+          "webhooks": []
+        }
+      ]
+    }
+  },
+  "database": {
+    "driver": "sqlite",
+    "path": "./soketi.db"
+  },
+  "queue": {
+    "driver": "sync"
+  },
+  "rateLimiter": {
+    "driver": "memory"
+  }
+}

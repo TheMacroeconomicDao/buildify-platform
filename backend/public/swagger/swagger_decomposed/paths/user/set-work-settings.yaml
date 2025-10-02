@@ -1,0 +1,46 @@
+post:
+  tags:
+    - user
+  summary: Сохранить список направлений и типы работ для исполнителя
+  operationId: set-work-settings
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            work-settings:
+              type: array
+              items:
+                type: object
+                properties:
+                  direction:
+                    type: string
+                  types:
+                    type: array
+                    items:
+                      type: string
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+    40X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Error/Response.yaml
+    50X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Error/Response.yaml

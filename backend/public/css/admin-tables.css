@@ -1,0 +1,173 @@
+/* Простые и эффективные стили для таблиц в админке Laravel Orchid */
+
+/* Основные стили таблиц - убираем все ограничения */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 0;
+    table-layout: auto !important; /* Принудительно автоматическое распределение */
+}
+
+/* Базовые стили ячеек - максимально гибкие */
+.table th,
+.table td {
+    padding: 12px 15px !important;
+    vertical-align: middle !important;
+    border-top: 1px solid #dee2e6;
+    white-space: normal !important; /* Разрешаем перенос */
+    word-wrap: break-word !important; /* Переносим длинные слова */
+    overflow-wrap: break-word !important;
+    min-width: auto !important; /* Убираем минимальную ширину */
+    max-width: none !important; /* Убираем максимальную ширину */
+    width: auto !important; /* Автоматическая ширина */
+}
+
+/* Только для ID колонок оставляем фиксированную ширину */
+.table th:first-child,
+.table td:first-child {
+    width: 80px !important;
+    min-width: 80px !important;
+    max-width: 80px !important;
+    white-space: nowrap !important;
+    text-align: center;
+}
+
+/* Заголовки таблиц */
+.table thead th {
+    background-color: #f8f9fa !important;
+    border-bottom: 2px solid #dee2e6 !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #495057 !important;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Строки таблиц */
+.table tbody tr {
+    transition: background-color 0.15s ease-in-out;
+}
+
+.table tbody tr:hover {
+    background-color: #f5f5f5 !important;
+}
+
+/* Улучшение текста в ячейках */
+.table td {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+
+/* Стили для действий в таблице */
+.table .btn-sm {
+    padding: 4px 8px;
+    font-size: 12px;
+    margin: 0 2px;
+    white-space: nowrap;
+}
+
+/* Контейнер таблицы */
+.bg-white.rounded.shadow-sm {
+    border: 1px solid #e3e6f0 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15) !important;
+    overflow: hidden;
+}
+
+/* Пагинация */
+.pagination {
+    margin: 0;
+    justify-content: center;
+}
+
+.pagination .page-link {
+    border-color: #dee2e6;
+    color: #5a5c69;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #5a5c69;
+    border-color: #5a5c69;
+}
+
+/* Стили для статусов */
+.badge {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+/* Улучшение контрастности */
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Улучшение скроллбара */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Адаптивность на мобильных */
+@media (max-width: 768px) {
+    .table th,
+    .table td {
+        padding: 8px 10px !important;
+        font-size: 13px !important;
+    }
+    
+    .table th:first-child,
+    .table td:first-child {
+        width: 60px !important;
+        min-width: 60px !important;
+        max-width: 60px !important;
+    }
+}
+
+/* Стили для выделенной строки */
+.table-active {
+    background-color: #e3f2fd !important;
+    border-left: 3px solid #2196f3 !important;
+}
+
+/* Принудительно убираем все ограничения ширины для Orchid */
+.table th[style*="width"],
+.table td[style*="width"] {
+    width: auto !important;
+}
+
+/* Исключение только для первой колонки */
+.table th:first-child[style*="width"],
+.table td:first-child[style*="width"] {
+    width: 80px !important;
+}
+
+/* Убираем фиксированную ширину у всех колонок кроме первой */
+.table th:not(:first-child),
+.table td:not(:first-child) {
+    width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
+}

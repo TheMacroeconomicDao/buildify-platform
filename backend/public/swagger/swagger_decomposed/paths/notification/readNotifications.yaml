@@ -1,0 +1,30 @@
+post:
+  tags:
+    - notification
+  description: API прочтения уведомлений
+  operationId: api-notification-read
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../../components/schemas/Notification/ReadNotifications/Request.yaml
+    required: true
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Notification/ReadNotifications/Response.yaml
+    40X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Error/Response.yaml
+    50X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Error/Response.yaml

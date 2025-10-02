@@ -1,0 +1,67 @@
+get:
+  tags:
+    - executors
+  summary: Получить данные исполнителя
+  description: Возвращает данные конкретного исполнителя.
+  parameters:
+    - name: id
+      in: path
+      description: ID исполнителя
+      required: true
+      schema:
+        type: integer
+        default: 1
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              result:
+                type: object
+                description: Данные исполнителя
+                properties:
+                  name:
+                    type: string
+                    description: Имя
+                  about_me:
+                    type: string
+                    nullable: true
+                    description: О себе
+                  license:
+                    type: string
+                    nullable: true
+                    description: Номер лицензии
+                  contacts:
+                    type: object
+                    description: Контакты
+                    properties:
+                      email:
+                        type: string
+                      telegram:
+                        type: string
+                        nullable: true
+                      whatsApp:
+                        type: string
+                        nullable: true
+                      facebook:
+                        type: string
+                        nullable: true
+                      viber:
+                        type: string
+                        nullable: true
+                  portfolios:
+                    type: array
+                    description: Портфолио (список файлов)
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        file_path:
+                          type: string

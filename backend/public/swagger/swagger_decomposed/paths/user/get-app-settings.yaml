@@ -1,0 +1,62 @@
+get:
+  tags:
+    - user
+  summary: Получить данные приложения
+  operationId: get-app-settings
+  responses:
+    200:
+      description: OK
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: true
+              result:
+                type: object
+                properties:
+                  direction_work:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        key:
+                          type: string
+                        name:
+                          type: string
+                  types_work:
+                    type: object
+                    properties:
+                      direction_work_key:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            key:
+                              type: string
+                            name:
+                              type: string
+                  localization:
+                    type: array
+                    items:
+                      type: string
+                      example:
+                        - 'en-US'
+                        - 'ru-RU'
+                        - 'uk-UA'
+                        - 'es-ES'
+                        - 'zh-CN'
+    40X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Error/Response.yaml
+    50X:
+      description: ERROR
+      content:
+        application/json:
+          schema:
+            $ref: ../../components/schemas/Error/Response.yaml

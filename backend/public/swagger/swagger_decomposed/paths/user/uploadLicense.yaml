@@ -1,0 +1,32 @@
+post:
+  summary: Загрузка файла лицензии
+  description: Загрузка файла лицензии исполнителем для верификации
+  tags:
+    - User
+  security:
+    - bearerAuth: []
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          $ref: "../../components/schemas/User/UploadLicense/Request.yaml"
+  responses:
+    200:
+      description: Файл успешно загружен
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/User/UploadLicense/Response.yaml"
+    400:
+      description: Ошибка валидации
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Error/Response.yaml"
+    403:
+      description: Доступ запрещен (только для исполнителей)
+      content:
+        application/json:
+          schema:
+            $ref: "../../components/schemas/Error/Response.yaml"

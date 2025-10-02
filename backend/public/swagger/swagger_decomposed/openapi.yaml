@@ -1,0 +1,117 @@
+openapi: 3.0.1
+info:
+  title: Stretchon API
+  version: 1.0.0
+servers:
+  - url: http://54.221.71.173/api
+    description: Production server
+  - url: http://stretchon.test/api
+    description: Local server
+security:
+  - bearerAuth: []
+tags:
+  - name: auth
+    description: Авторизация пользователей
+  - name: registration
+    description: Регистрация пользователей
+  - name: password
+    description: Восстановление пароля
+  - name: user
+    description: Пользователь
+  - name: executors
+    description: Исполнители
+  - name: notification
+    description: Уведомления
+  - name: banners
+    description: Баннеры
+  - name: orders
+    description: Заказа
+  - name: attachments
+    description: Вложения
+  - name: subscriptions
+    description: Подписки
+paths:
+  /login:
+    $ref: paths/login.yaml
+  /logout:
+    $ref: paths/logout.yaml
+  /registration/start:
+    $ref: paths/registrationStart.yaml
+  /registration/end:
+    $ref: paths/registrationEnd.yaml
+  /password-recovery:
+    $ref: paths/passwordRecovery.yaml
+  /change-password:
+    $ref: paths/changePassword.yaml
+  /user/delete:
+    $ref: paths/user/delete.yaml
+  /user/me:
+    $ref: paths/user/me.yaml
+  /user/change-password:
+    $ref: paths/user/changePassword.yaml
+  /user/edit:
+    $ref: paths/user/edit.yaml
+  /user/update-avatar:
+    $ref: paths/user/updateAvatar.yaml
+  /user/settings-update:
+    $ref: paths/user/settingsUpdate.yaml
+  /user/settings-get:
+    $ref: paths/user/settingsGet.yaml
+  /user/set-work-settings:
+    $ref: paths/user/set-work-settings.yaml
+  /user/get-app-settings:
+    $ref: paths/user/get-app-settings.yaml
+  /executors/{id}:
+    $ref: paths/executors/{id}.yaml
+  /executors/{id}/reviews:
+    $ref: paths/executors/{id}/reviews.yaml
+  /notification/get-count-notifications:
+    $ref: paths/notification/getCountNotifications.yaml
+  /notification/get-notifications:
+    $ref: paths/notification/getNotifications.yaml
+  /notification/read-notifications:
+    $ref: paths/notification/readNotifications.yaml
+  /banners:
+    $ref: paths/banners/banners.yaml
+  /orders:
+    $ref: paths/orders.yaml
+  /orders/active:
+    $ref: paths/orders/active.yaml
+  /orders/{id}:
+    $ref: paths/orders/{id}.yaml
+  /orders/{id}/cancel:
+    $ref: paths/orders/{id}/cancel.yaml
+  /orders/{id}/complete:
+    $ref: paths/orders/{id}/complete.yaml
+  /orders/{id}/complete-by-customer:
+    $ref: paths/orders/{id}/complete-by-customer.yaml
+  /orders/{id}/accept:
+    $ref: paths/orders/{id}/accept.yaml
+  /orders/{id}/reject:
+    $ref: paths/orders/{id}/reject.yaml
+  /orders/{id}/responses:
+    $ref: paths/orders/{id}/responses.yaml
+  /orders/{id}/responses/{responseId}/send-contact:
+    $ref: paths/orders/{id}/responses/{responseId}/send-contact.yaml
+  /orders/{id}/responses/{responseId}/select:
+    $ref: paths/orders/{id}/responses/{responseId}/select.yaml
+  /orders/{id}/responses/{responseId}/reject:
+    $ref: paths/orders/{id}/responses/{responseId}/reject.yaml
+  /orders/{id}/responses/{responseId}/revoke:
+    $ref: paths/orders/{id}/responses/{responseId}/revoke.yaml
+  /orders/{id}/responses/{responseId}/take-on-work:
+    $ref: paths/orders/{id}/responses/{responseId}/take-on-work.yaml
+  /subscriptions:
+    $ref: paths/subscriptions/subscriptions.yaml
+  /subscriptions/my:
+    $ref: paths/subscriptions/my.yaml
+  /subscriptions/{tariff}/checkout:
+    $ref: paths/subscriptions/checkout.yaml
+  /subscriptions/unsubscribe:
+    $ref: paths/subscriptions/unsubscribe.yaml
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

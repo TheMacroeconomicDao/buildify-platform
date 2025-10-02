@@ -1,0 +1,46 @@
+services:
+  buildify-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    environment:
+      - DB_CONNECTION=pgsql
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=buildify_new
+      - DB_USERNAME=buildify
+      - DB_PASSWORD=buildify123
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - buildify-network
+
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=buildify_new
+      - POSTGRES_USER=buildify
+      - POSTGRES_PASSWORD=buildify123
+    ports:
+      - "5433:5432"  # Используем другой порт, чтобы не конфликтовать с существующим
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - buildify-network
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6380:6379"  # Используем другой порт
+    networks:
+      - buildify-network
+
+volumes:
+  postgres_data:
+
+networks:
+  buildify-network:
+    driver: bridge 

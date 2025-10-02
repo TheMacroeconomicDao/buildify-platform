@@ -1,0 +1,6 @@
+type: object
+properties:
+  avatar:
+    type: file
+    description: Аватар
+    required: true

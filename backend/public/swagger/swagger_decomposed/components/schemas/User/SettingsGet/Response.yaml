@@ -1,0 +1,26 @@
+type: object
+properties:
+  localization:
+    type: array
+    items:
+      type: string
+      example:
+        - 'en-US'
+        - 'ru-RU'
+        - 'uk-UA'
+        - 'es-ES'
+        - 'zh-CN'
+  currency:
+    type: array
+    items:
+      type: string
+      example:
+        - 'aed'
+        - 'rub'
+  language:
+    type: array
+    items:
+      type: string
+      example:
+        - 'en'
+        - 'ru'

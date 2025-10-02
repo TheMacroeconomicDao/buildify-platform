@@ -1,0 +1,25 @@
+post:
+  tags:
+    - orders
+  summary: Отмена заказа
+  description: Отменяет заказ по его идентификатору.
+  parameters:
+    - name: id
+      in: path
+      description: ID заказа
+      required: true
+      schema:
+        type: integer
+        default: 1
+  responses:
+    '200':
+      description: Успешный ответ
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              success:
+                description: Результат операции
+                type: boolean
+                example: true
